@@ -1,0 +1,57 @@
+{
+  "expo": {
+    "name": "expo-project",
+    "slug": "expo-project",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "expo-project",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.david12tl.expoproject"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "package": "com.david12tl.expoproject"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "ee9b89b9-5a10-4996-a5cb-3d3d29286ab5"
+      }
+    },
+    "owner": "david12tl",
+    "updates": {
+      "url": "https://u.expo.dev/ee9b89b9-5a10-4996-a5cb-3d3d29286ab5"
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    }
+  }
+}
