@@ -1,0 +1,205 @@
+import { Dimensions, Platform, StyleSheet } from 'react-native';
+
+const { width } = Dimensions.get('window');
+
+export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#0a0c10',
+  },
+  glowTop: {
+    position: 'absolute',
+    top: -150,
+    left: -50,
+    width: 300,
+    height: 300,
+    borderRadius: 150,
+    backgroundColor: 'rgba(0, 229, 255, 0.08)',
+    zIndex: 0,
+  },
+  scrollContent: {
+    paddingBottom: 40,
+  },
+  nav: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 24,
+    paddingVertical: 20,
+  },
+  logo: {
+    fontSize: 22,
+    fontWeight: '800',
+    color: '#fff',
+    letterSpacing: -1,
+  },
+  navCta: {
+    backgroundColor: '#00e5ff',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    borderRadius: 20,
+  },
+  navCtaText: {
+    color: '#0a0c10',
+    fontWeight: '700',
+    fontSize: 13,
+  },
+  hero: {
+    paddingHorizontal: 24,
+    paddingTop: 40,
+    alignItems: 'center',
+  },
+  badge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 229, 255, 0.05)',
+    borderWidth: 1,
+    borderColor: 'rgba(0, 229, 255, 0.2)',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 100,
+    marginBottom: 20,
+  },
+  badgeDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: '#00e5ff',
+    marginRight: 8,
+  },
+  badgeText: {
+    color: '#00e5ff',
+    fontSize: 10,
+    fontWeight: '700',
+    letterSpacing: 1,
+  },
+  heroTitle: {
+    fontSize: 42,
+    fontWeight: '800',
+    color: '#fff',
+    textAlign: 'center',
+    lineHeight: 46,
+    letterSpacing: -1.5,
+  },
+  line2: {
+    color: '#4b5563',
+    fontWeight: '600',
+  },
+  heroDesc: {
+    color: '#9ca3af',
+    textAlign: 'center',
+    marginTop: 18,
+    lineHeight: 22,
+    fontSize: 15,
+    paddingHorizontal: 15,
+  },
+  heroActions: {
+    flexDirection: 'row',
+    marginTop: 35,
+    gap: 12,
+  },
+  btnPrimary: {
+    backgroundColor: '#00e5ff',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 14,
+    borderRadius: 30,
+    ...Platform.select({
+      ios: {
+        shadowColor: '#00e5ff',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.3,
+        shadowRadius: 8,
+      },
+      android: {
+        elevation: 5,
+      },
+    }),
+  },
+  btnPrimaryText: {
+    color: '#0a0c10',
+    fontWeight: '700',
+    fontSize: 15,
+    marginRight: 6,
+  },
+  btnGhost: {
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.1)',
+    paddingHorizontal: 20,
+    paddingVertical: 14,
+    borderRadius: 30,
+  },
+  btnGhostText: {
+    color: '#fff',
+    fontWeight: '600',
+    fontSize: 15,
+  },
+  sectionHeader: {
+    paddingHorizontal: 24,
+    marginTop: 70,
+  },
+  sectionLabel: {
+    color: '#00e5ff',
+    fontSize: 11,
+    fontWeight: '700',
+    letterSpacing: 2,
+    marginBottom: 10,
+  },
+  sectionTitle: {
+    color: '#fff',
+    fontSize: 28,
+    fontWeight: '800',
+  },
+  modulesGrid: {
+    paddingHorizontal: 24,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    marginTop: 25,
+  },
+  moduleCard: {
+    backgroundColor: '#11141b',
+    width: (width - 60) / 2,
+    padding: 18,
+    borderRadius: 22,
+    borderWidth: 1,
+    borderColor: 'rgba(255,255,255,0.03)',
+    marginBottom: 12,
+  },
+  moduleIconContainer: {
+    width: 40,
+    height: 40,
+    backgroundColor: 'rgba(255,255,255,0.03)',
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 14,
+  },
+  moduleName: {
+    color: '#fff',
+    fontWeight: '700',
+    fontSize: 14,
+    marginBottom: 6,
+  },
+  moduleDesc: {
+    color: '#6b7280',
+    fontSize: 11,
+    lineHeight: 16,
+    marginBottom: 12,
+  },
+  moduleTag: {
+    fontSize: 9,
+    fontWeight: '800',
+    letterSpacing: 0.5,
+  },
+  footer: {
+    marginTop: 50,
+    paddingHorizontal: 24,
+    alignItems: 'center',
+  },
+  footerText: {
+    color: 'rgba(255,255,255,0.2)',
+    fontSize: 11,
+  }
+});

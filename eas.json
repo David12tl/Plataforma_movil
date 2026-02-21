@@ -10,6 +10,9 @@
       "android": {
         "image": "latest"
       },
+      "preview": {
+      "distribution": "internal"
+    },
       "ios": {
         "image": "latest"
       }
@@ -44,4 +47,5 @@
   "submit": {
     "production": {}
   }
+  
 }
