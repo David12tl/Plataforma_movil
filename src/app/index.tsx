@@ -1,104 +1,84 @@
-import { useRouter } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import {
-  AlertTriangle,
-  Camera,
-  ChevronRight,
-  FileText,
-  LayoutDashboard,
-  LucideIcon
-} from 'lucide-react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router'; // Importación necesaria
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  View
-} from 'react-native';
+import { SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-// Importación de tus estilos externos
-import { styles } from './styles';
-
-interface ModuleCardProps {
-  icon: LucideIcon;
-  title: string;
-  desc: string;
-  tag: string;
-  color: string;
-}
-
-const ModuleCard = ({ icon: Icon, title, desc, tag, color }: ModuleCardProps) => (
-  <View style={styles.moduleCard}>
-    <View style={styles.moduleIconContainer}>
-      <Icon size={24} color={color} />
-    </View>
-    <Text style={styles.moduleName}>{title}</Text>
-    <Text style={styles.moduleDesc}>{desc}</Text>
-    <Text style={[styles.moduleTag, { color: color }]}>{tag}</Text>
-  </View>
-);
-
-export default function LandingScreen() {
-  const router = useRouter(); // Hook para manejar la navegación
+export default function WelcomeScreen() {
+  const router = useRouter(); // Inicialización del router
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar style="light" />
-      <View style={styles.glowTop} />
+      <StatusBar barStyle="dark-content" />
+      
+      {/* Header */}
+      <View style={styles.header}>
+        <Ionicons name="settings-outline" size={24} color="#5200cc" />
+      </View>
 
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
-        {/* Hero */}
-        <View style={styles.hero}>
-          <View style={styles.badge}>
-            <View style={styles.badgeDot} />
-            <Text style={styles.badgeText}>SISTEMA OPERATIVO NATIVO</Text>
-          </View>
-          
-          <Text style={styles.heroTitle}>
-            Operaciones{"\n"}
-            <Text style={{ color: '#00e5ff', fontStyle: 'italic' }}>en control.</Text>{"\n"}
-            <Text style={styles.line2}>Siempre.</Text>
-          </Text>
-
-          <Text style={styles.heroDesc}>
-            Plataforma de gestión operativa de alta gama. 
-            Seguridad industrial y visión inteligente.
-          </Text>
-
-          <View style={styles.heroActions}>
-            {/* BOTÓN CON NAVEGACIÓN */}
-            <TouchableOpacity 
-              style={styles.btnPrimary} 
-              activeOpacity={0.8}
-              onPress={() => router.push('/auth/login/login')}>
-              <Text style={styles.btnPrimaryText}>Iniciar Sesión</Text>
-              <ChevronRight size={18} color="#0a0c10" />
-            </TouchableOpacity>
-            
-            <TouchableOpacity style={styles.btnGhost}>
-              <Text style={styles.btnGhostText}>Stack Técnico</Text>
-            </TouchableOpacity>
+      {/* Hero Section */}
+      <View style={styles.heroContainer}>
+        <View style={styles.heroImage}>
+          <View style={styles.overlay} />
+          <View style={styles.iconWrapper}>
+            <Ionicons name="qr-code-outline" size={64} color="#5200cc" />
           </View>
         </View>
+      </View>
 
-        {/* Grid de Módulos */}
-        <View style={styles.sectionHeader}>
-          <Text style={styles.sectionLabel}>CAPACIDADES</Text>
-          <Text style={styles.sectionTitle}>Ecosistema Modular.</Text>
-        </View>
+      {/* Content */}
+      <View style={styles.content}>
+        <Text style={styles.title}>Bienvenido a QR Manager</Text>
+        <Text style={styles.subtitle}>
+          Gestiona incidencias y certificados de forma rápida y segura mediante códigos QR
+        </Text>
+      </View>
 
-        <View style={styles.modulesGrid}>
-          <ModuleCard icon={LayoutDashboard} title="Panel" desc="Métricas en tiempo real." tag="DASHBOARD" color="#00e5ff" />
-          <ModuleCard icon={FileText} title="Cumplimiento" desc="Certificaciones ISO." tag="CERTIFICATES" color="#30d158" />
-          <ModuleCard icon={Camera} title="Visión AI" desc="Escaneo de activos." tag="SCANNER" color="#ffcc02" />
-          <ModuleCard icon={AlertTriangle} title="Seguridad" desc="Gestión de riesgos." tag="INCIDENTS" color="#ff6b35" />
-        </View>
+      {/* Buttons */}
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity 
+          style={styles.primaryButton}
+         // En tu botón
+          onPress={() => router.push('/Dashboard/page')}
+        >
+          <Text style={styles.primaryButtonText}>Iniciar Sesión</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity style={styles.secondaryButton}>
+          <Text style={styles.secondaryButtonText}>Crear Cuenta</Text>
+        </TouchableOpacity>
+      </View>
 
-        <View style={styles.footer}>
-           <Text style={styles.footerText}>© 2026 OpsCore · Expo Router</Text>
+      {/* Footer */}
+      <View style={styles.footer}>
+        <View style={styles.pagination}>
+          <View style={[styles.dot, styles.activeDot]} />
+          <View style={styles.dot} />
+          <View style={styles.dot} />
         </View>
-      </ScrollView>
+        <Text style={styles.versionText}>V2.4.0 PROFESSIONAL EDITION</Text>
+      </View>
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: '#f7f5f8' },
+  header: { alignItems: 'flex-end', padding: 20 },
+  heroContainer: { paddingHorizontal: 24, marginVertical: 20 },
+  heroImage: { height: 280, borderRadius: 16, backgroundColor: '#e6d9ff', justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: 'rgba(82, 0, 204, 0.1)' },
+  overlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(82, 0, 204, 0.2)' },
+  iconWrapper: { backgroundColor: 'white', padding: 20, borderRadius: 50 },
+  content: { paddingHorizontal: 24, marginTop: 20 },
+  title: { fontSize: 32, fontWeight: 'bold', textAlign: 'center', color: '#1a1a1a', marginBottom: 16 },
+  subtitle: { fontSize: 16, textAlign: 'center', color: '#666', lineHeight: 24 },
+  buttonContainer: { paddingHorizontal: 24, gap: 12, marginTop: 20 },
+  primaryButton: { backgroundColor: '#5200cc', height: 56, borderRadius: 12, justifyContent: 'center', alignItems: 'center' },
+  primaryButtonText: { color: 'white', fontWeight: 'bold', fontSize: 16 },
+  secondaryButton: { backgroundColor: 'rgba(82, 0, 204, 0.1)', height: 56, borderRadius: 12, justifyContent: 'center', alignItems: 'center' },
+  secondaryButtonText: { color: '#5200cc', fontWeight: 'bold', fontSize: 16 },
+  footer: { paddingVertical: 30, alignItems: 'center' },
+  pagination: { flexDirection: 'row', gap: 6, marginBottom: 10 },
+  dot: { width: 6, height: 6, borderRadius: 3, backgroundColor: 'rgba(82, 0, 204, 0.3)' },
+  activeDot: { width: 24, backgroundColor: '#5200cc' },
+  versionText: { fontSize: 10, color: '#999', letterSpacing: 1, fontWeight: '600' }
+});
