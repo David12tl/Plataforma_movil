@@ -1,62 +1,62 @@
 import { Ionicons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router'; // Importación necesaria
+import { useRouter } from 'expo-router';
 import React from 'react';
-import { SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View
+} from 'react-native';
 
 export default function WelcomeScreen() {
-  const router = useRouter(); // Inicialización del router
+  const router = useRouter();
 
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" />
       
-      {/* Header */}
       <View style={styles.header}>
-        <Ionicons name="settings-outline" size={24} color="#5200cc" />
+        <TouchableOpacity>
+          <Ionicons name="settings-sharp" size={24} color="#5200cc" />
+        </TouchableOpacity>
       </View>
 
-      {/* Hero Section */}
-      <View style={styles.heroContainer}>
-        <View style={styles.heroImage}>
-          <View style={styles.overlay} />
-          <View style={styles.iconWrapper}>
-            <Ionicons name="qr-code-outline" size={64} color="#5200cc" />
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        {/* Contenedor sin imagen, evita errores de rutas */}
+        <View style={styles.heroContainer}>
+          <View style={styles.heroPlaceholder}>
+            <View style={styles.qrIconOverlay}>
+              <Ionicons name="qr-code" size={80} color="#5200cc" />
+            </View>
           </View>
         </View>
-      </View>
 
-      {/* Content */}
-      <View style={styles.content}>
-        <Text style={styles.title}>Bienvenido a QR Manager</Text>
-        <Text style={styles.subtitle}>
-          Gestiona incidencias y certificados de forma rápida y segura mediante códigos QR
-        </Text>
-      </View>
-
-      {/* Buttons */}
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity 
-          style={styles.primaryButton}
-         // En tu botón
-          onPress={() => router.push('/Dashboard/page')}
-        >
-          <Text style={styles.primaryButtonText}>Iniciar Sesión</Text>
-        </TouchableOpacity>
-        
-        <TouchableOpacity style={styles.secondaryButton}>
-          <Text style={styles.secondaryButtonText}>Crear Cuenta</Text>
-        </TouchableOpacity>
-      </View>
-
-      {/* Footer */}
-      <View style={styles.footer}>
-        <View style={styles.pagination}>
-          <View style={[styles.dot, styles.activeDot]} />
-          <View style={styles.dot} />
-          <View style={styles.dot} />
+        <View style={styles.content}>
+          <Text style={styles.title}>Bienvenido a QR Manager</Text>
+          <Text style={styles.subtitle}>
+            Gestiona incidencias y certificados de forma rápida y segura mediante códigos QR
+          </Text>
         </View>
-        <Text style={styles.versionText}>V2.4.0 PROFESSIONAL EDITION</Text>
-      </View>
+
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity 
+            style={styles.primaryButton}
+            onPress={() => router.push('/auth/login/login' as any)}
+          >
+            <Text style={styles.primaryButtonText}>Iniciar Sesión</Text>
+          </TouchableOpacity>
+          
+          <TouchableOpacity 
+            style={styles.secondaryButton}
+            onPress={() => router.push('/auth/registro/registro' as any)}
+          >
+            <Text style={styles.secondaryButtonText}>Crear Cuenta</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -64,21 +64,30 @@ export default function WelcomeScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#f7f5f8' },
   header: { alignItems: 'flex-end', padding: 20 },
-  heroContainer: { paddingHorizontal: 24, marginVertical: 20 },
-  heroImage: { height: 280, borderRadius: 16, backgroundColor: '#e6d9ff', justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: 'rgba(82, 0, 204, 0.1)' },
-  overlay: { ...StyleSheet.absoluteFillObject, backgroundColor: 'rgba(82, 0, 204, 0.2)' },
-  iconWrapper: { backgroundColor: 'white', padding: 20, borderRadius: 50 },
-  content: { paddingHorizontal: 24, marginTop: 20 },
-  title: { fontSize: 32, fontWeight: 'bold', textAlign: 'center', color: '#1a1a1a', marginBottom: 16 },
-  subtitle: { fontSize: 16, textAlign: 'center', color: '#666', lineHeight: 24 },
-  buttonContainer: { paddingHorizontal: 24, gap: 12, marginTop: 20 },
-  primaryButton: { backgroundColor: '#5200cc', height: 56, borderRadius: 12, justifyContent: 'center', alignItems: 'center' },
+  scrollContent: { paddingBottom: 40 },
+  heroContainer: { paddingHorizontal: 24, marginBottom: 30 },
+  heroPlaceholder: {
+    height: 260,
+    borderRadius: 24,
+    backgroundColor: '#e6d9ff', // Color morado claro de fondo
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  qrIconOverlay: {
+    backgroundColor: 'white',
+    padding: 30,
+    borderRadius: 100,
+    elevation: 5,
+    shadowColor: '#5200cc',
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
+  },
+  content: { paddingHorizontal: 30, marginBottom: 40 },
+  title: { fontSize: 32, fontWeight: 'bold', textAlign: 'center', color: '#0f172a', marginBottom: 12 },
+  subtitle: { fontSize: 16, textAlign: 'center', color: '#64748b', lineHeight: 24 },
+  buttonContainer: { paddingHorizontal: 24, gap: 16 },
+  primaryButton: { backgroundColor: '#5200cc', height: 56, borderRadius: 16, justifyContent: 'center', alignItems: 'center' },
   primaryButtonText: { color: 'white', fontWeight: 'bold', fontSize: 16 },
-  secondaryButton: { backgroundColor: 'rgba(82, 0, 204, 0.1)', height: 56, borderRadius: 12, justifyContent: 'center', alignItems: 'center' },
+  secondaryButton: { backgroundColor: 'rgba(82, 0, 204, 0.05)', height: 56, borderRadius: 16, justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: 'rgba(82, 0, 204, 0.2)' },
   secondaryButtonText: { color: '#5200cc', fontWeight: 'bold', fontSize: 16 },
-  footer: { paddingVertical: 30, alignItems: 'center' },
-  pagination: { flexDirection: 'row', gap: 6, marginBottom: 10 },
-  dot: { width: 6, height: 6, borderRadius: 3, backgroundColor: 'rgba(82, 0, 204, 0.3)' },
-  activeDot: { width: 24, backgroundColor: '#5200cc' },
-  versionText: { fontSize: 10, color: '#999', letterSpacing: 1, fontWeight: '600' }
 });
