@@ -14,6 +14,7 @@ export default function BottomNav() {
   { name: 'Certificados', icon: 'ribbon-outline', route: '/Registro_certificados/page' },
   { name: 'Historial Cer.', icon: 'document-text-outline', route: '/Historial_certificado/page' },
   { name: 'Historial Inc.', icon: 'time-outline', route: '/Historial_incidencia/page' },
+  { name: 'Historial Inc.', icon: 'time-outline', route: '/QR_generador/page' },
   { name: 'Ajustes', icon: 'settings-outline', route: '/auth/login/login' },
   ];
 
