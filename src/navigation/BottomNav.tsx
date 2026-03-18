@@ -9,12 +9,12 @@ export default function BottomNav() {
 
   // Mapeo de tus carpetas a rutas de navegación
   const navItems = [
-  { name: 'Inicio', icon: 'home-outline', route: '/Dashboard/page' },
-  { name: 'Incidencias', icon: 'alert-circle-outline', route: '/Registro_incidencia/page' },
-  { name: 'Certificados', icon: 'ribbon-outline', route: '/Registro_certificados/page' },
-  { name: 'Historial Cer.', icon: 'document-text-outline', route: '/Historial_certificado/page' },
-  { name: 'Historial Inc.', icon: 'time-outline', route: '/Historial_incidencia/page' },
-  { name: 'Historial Inc.', icon: 'time-outline', route: '/QR_generador/page' },
+  { name: 'Inicio', icon: 'home-outline', route: '/Dashboard' },
+  { name: 'Incidencias', icon: 'alert-circle-outline', route: '/Registro_incidencia' },
+  { name: 'Certificados', icon: 'ribbon-outline', route: '/Registro_certificados' },
+  { name: 'Historial Cer.', icon: 'document-text-outline', route: '/Historial_certificado' },
+  { name: 'Historial Inc.', icon: 'time-outline', route: '/Historial_incidencia' },
+  { name: 'Historial Inc.', icon: 'time-outline', route: '/QR_generador' },
   { name: 'Ajustes', icon: 'settings-outline', route: '/auth/login/login' },
   ];
 
