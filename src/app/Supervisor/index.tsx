@@ -116,10 +116,10 @@ export default function SupervisorIndex() {
         
         {/* Menú de Opciones */}
         <View style={styles.menuContainer}>
-          <TouchableOpacity style={styles.menuItem} onPress={() => router.push('#' as any)}>
+          <TouchableOpacity style={styles.menuItem} onPress={() => router.push('../Registro_incidencia' as any)}>
             <View style={[styles.iconBox, { backgroundColor: '#3B2D52' }]}><Text style={styles.iconText}>👥</Text></View>
             <View style={styles.menuInfo}>
-              <Text style={styles.menuTitle}>Control de Personal</Text>
+              <Text style={styles.menuTitle}>Registro de incidentes</Text>
               <Text style={styles.menuSub}>Validación de certificados</Text>
             </View>
             <Text style={styles.arrow}>❯</Text>
